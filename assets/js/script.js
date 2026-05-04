@@ -27,22 +27,30 @@
       menu.hidden = true;
       document.body.style.overflow = '';
     };
-    toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') === 'true';
-      if (open) {
-        close();
-      } else {
-        toggle.setAttribute('aria-expanded', 'true');
-        menu.hidden = false;
-        document.body.style.overflow = 'hidden';
-      }
+    const open = () => {
+      toggle.setAttribute('aria-expanded', 'true');
+      menu.hidden = false;
+      document.body.style.overflow = 'hidden';
+    };
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      isOpen ? close() : open();
     });
+    // close when tapping any link inside the menu
     menu.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A') close();
+      const a = e.target.closest('a');
+      if (a) close();
     });
+    // close on Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') close();
     });
+    // close if window resizes up to desktop while menu is open
+    const mq = window.matchMedia('(min-width: 981px)');
+    const onMQ = (ev) => { if (ev.matches) close(); };
+    mq.addEventListener ? mq.addEventListener('change', onMQ) : mq.addListener(onMQ);
   }
 
   /* ---------- Smooth anchor offset (account for sticky header on small) ---------- */

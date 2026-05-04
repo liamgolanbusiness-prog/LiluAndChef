@@ -192,12 +192,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .nav-toggle[aria-expanded="true"] span:nth-child(3){top:20px;transform:rotate(-45deg)}
 
 .mobile-menu{
-  display:none;
   padding: 1rem 1rem 1.5rem;
   border-block-start:1px solid var(--line);
   background: rgba(13,9,7,.95);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  max-height: calc(100svh - 70px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
+.mobile-menu[hidden]{display:none}
 .mobile-menu ul{list-style:none;margin:0;padding:0;display:grid;gap:.25rem}
 .mobile-menu a{display:block;padding:.9rem 1rem;border-radius:12px;font-size:1.1rem;color:var(--ink)}
 .mobile-menu a:hover{background:rgba(247,239,219,.06)}
@@ -208,6 +212,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .nav, .header-cta{display:none}
   .nav-toggle{display:block}
   .header-row{grid-template-columns:auto 1fr auto}
+}
+@media (min-width: 981px){
+  .mobile-menu{display:none !important}
 }
 
 /* ============== Hero ============== */
