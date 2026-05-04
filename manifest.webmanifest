@@ -1,0 +1,15 @@
+{
+  "name": "Lilu & Chef · קייטרינג בוטיק",
+  "short_name": "Lilu & Chef",
+  "description": "קייטרינג בוטיק וחוויות שף בכפר סבא והשרון.",
+  "lang": "he",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0d0907",
+  "theme_color": "#0d0907",
+  "icons": [
+    { "src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
